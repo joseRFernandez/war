@@ -1,8 +1,7 @@
-const express = require('express');
-const PORT = 3001;
-const app = express();
 const path = require('path');
+const express = require('express');
 const morgan = require('morgan');
+const app = express();
 
 module.exports = app;
 
@@ -12,10 +11,14 @@ app.use(morgan('dev'));
 //parsing middleware
 app.use(express.json());
 
-// app.get('/', (req, res) =>
-//   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-// );
+//api route mount
+app.use('/api', require('./api'));
 
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+);
+
+//toy endpoint
 app.get('/', (req, res) => {
   try {
     res.send('Jose');
@@ -24,8 +27,6 @@ app.get('/', (req, res) => {
   }
 });
 
-//api route mount
-app.use('/api', require('./api'));
 
 //static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')));
