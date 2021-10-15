@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
   }
 });
 
+//api route mount
+app.use('/api', require('./api'));
+
 //static file-serving middleware
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
