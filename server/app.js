@@ -19,13 +19,13 @@ app.get('/', (req, res) =>
 );
 
 //toy endpoint
-app.get('/', (req, res) => {
-  try {
-    res.send('Jose');
-  } catch (err) {
-    console.log(err);
-  }
-});
+// app.get('/', (req, res) => {
+//   try {
+//     res.send('Jose');
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 
 //static file-serving middleware

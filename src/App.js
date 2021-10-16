@@ -1,12 +1,12 @@
-import Deck, { shuffleDeck } from "./utils";
+import Deck, { shuffleDeck } from './utils';
+import Drawer from './components/Drawer'
 
 function App() {
-const deck = new Deck();
-// console.log(deck.cards[0])
-console.log(deck)
+  const deck = new Deck();
+  console.log(deck);
   return (
-    <div className="App">
-      <h1>HomePage</h1>
+    <div>
+      <Drawer />
     </div>
   );
 }
