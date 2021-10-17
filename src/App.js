@@ -1,12 +1,13 @@
-import Deck, { shuffleDeck } from './utils';
 import Drawer from './components/Drawer'
+import Routes from './Routes';
+import StartScreen from './components/StartScreen';
 
 function App() {
-  const deck = new Deck();
-  console.log(deck);
   return (
     <div>
       <Drawer />
+      <StartScreen />
+      {/* <Routes /> */}
     </div>
   );
 }

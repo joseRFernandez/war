@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -19,6 +20,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ColorizeIcon from '@mui/icons-material/Colorize';
 import StartScreen from './StartScreen';
+import { routes } from '../utils';
 
 const drawerWidth = 240;
 
@@ -38,7 +40,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
       }),
       marginLeft: 0,
     }),
-  }),
+  })
 );
 
 const AppBar = styled(MuiAppBar, {
@@ -66,7 +68,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
-
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
@@ -114,24 +115,41 @@ export default function PersistentDrawerLeft() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
-          {['My Stats', 'Select Deck', 'View Opponent Stats', 'Forfeit Match'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index === 0 || index === 2 ? <AccountCircleIcon /> : index === 3 ? <CancelIcon /> : <ColorizeIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+          {[
+            'My_Stats',
+            'Select_Deck',
+            'View_Opponent_Stats',
+            'Forfeit_Match',
+          ].map((text, index) => (
+            <ListItem button key={index}>
+              <Link to={text.toLowerCase()}>
+                <ListItemIcon>
+                  {index === 0 || index === 2 ? (
+                    <AccountCircleIcon />
+                  ) : index === 3 ? (
+                    <CancelIcon />
+                  ) : (
+                    <ColorizeIcon />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </Link>
             </ListItem>
           ))}
         </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <StartScreen />
+
       </Main>
     </Box>
   );

@@ -62,3 +62,23 @@ export const shuffleDeck = (deck) => {
   }
 }
 
+
+export const routes = [
+  {
+    path: '/user-stats//player1',
+    // component: StatsPage,
+  },
+  {
+    path: '/select-deck',
+    // component: DeckSelect,
+  },
+  {
+    path: '/user-stats/opponent',
+    // component: StatsPage
+  },
+  {
+    path: '/game-over',
+    // component: GameOver
+  },
+];
+
