@@ -1,5 +1,5 @@
 // this file will be used to build a fresh deck before every game
-const SUITS = ['♠', '♥', '♣', '♦'];
+const SUITS = ['S', 'H', 'C', 'D'];
 
 const VALUES = [
   '2',
@@ -18,9 +18,10 @@ const VALUES = [
 ];
 
 class Card {
-  constructor(suit, value) {
+  constructor(suit, value, image) {
     this.suit = suit;
     this.value = value;
+    this.image = `/2color/${value}${suit}.svg`;
   }
 }
 
@@ -40,28 +41,20 @@ const newDeck = () => {
 
 // create a recursive card shuffler
 export const shuffleDeck = (deck) => {
-  const hand1 = []
-  const hand2 = [];
-
-  const innerShuffle = (deck) => {
-    //base case -- if we have 1 card left - return card
-    if (deck.length === 1) {
-      return deck.slice();
-    }
-    // all other paths will trigger a recursive call
-    else {
-      let randIdx = Math.floor(Math.random() * deck.length);
-      const randCard = deck.slice()[randIdx];
-      console.log(randCard);
-    }
-
-    if (deck.length === 1) {
-      return innerShuffle(deck.slice());
-    }
-
+  // shuffle the cards
+  for (let i = deck.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * i);
+    let temp = deck[i];
+    deck[i] = deck[j];
+    deck[j] = temp;
   }
-}
-
+  deck.hand1 = deck.slice(0, deck.length / 2);
+  deck.hand2 = deck.slice(deck.length / 2, deck.length);
+  // console.log('hand1: ', deck.hand1);
+  // console.log('hand2: ', deck.hand2);
+  // console.log(deck)
+  return deck;
+};
 
 export const routes = [
   {
@@ -82,3 +75,6 @@ export const routes = [
   },
 ];
 
+export const determineValue = (card) => {
+  console.log(card.card[0]);
+};

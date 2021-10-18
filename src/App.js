@@ -1,13 +1,12 @@
 import Drawer from './components/Drawer'
-import Routes from './Routes';
 import StartScreen from './components/StartScreen';
+import Card from './components/Card';
 
 function App() {
   return (
     <div>
       <Drawer />
       <StartScreen />
-      {/* <Routes /> */}
     </div>
   );
 }

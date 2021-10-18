@@ -26,11 +26,9 @@ const StartScreen = (props) => {
           <Button variant="contained" onClick={clickHandler}>
             Start Game
           </Button>
-          <Button onClick={stateChecker}>Check State</Button>
       </div>
     </Fragment>
   ) : (
-    // null
     <GameBoard />
   );
 };
