@@ -5,10 +5,14 @@ import { Link } from 'react-router-dom';
 import GameBoard from './GameBoard';
 
 import { useHistory } from 'react-router';
-
+import Deck, {shuffleAndDealDeck} from '../utils';
 const StartScreen = (props) => {
   const [gameIsRunning, setGameIsRunning] = useState(false);
   const history = useHistory();
+
+  const deckOfCards = new Deck().cards;
+  shuffleAndDealDeck(deckOfCards);
+  const { hand1, hand2 } = deckOfCards;
 
   const clickHandler = () => {
     setGameIsRunning(true);
@@ -29,7 +33,7 @@ const StartScreen = (props) => {
       </div>
     </Fragment>
   ) : (
-    <GameBoard />
+    <GameBoard data={{hand1, hand2}}/>
   );
 };
 

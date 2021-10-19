@@ -7,6 +7,8 @@ import { Box } from '@mui/system';
 export default function BasicCard(props) {
   const { status } = props;
 
+  // console.log("props in Card: ", props)
+
   if (status) {
     return (
       <Fragment>
@@ -15,12 +17,12 @@ export default function BasicCard(props) {
             <CardMedia
               component="img"
               height="100%"
-              image={props.cards[0].image}
+              image={props.data[0].image}
               alt="card"
               sx={{ objectFit: 'contain' }}
             />
           </Card>
-          <Button variant="contained" onClick={() => console.log(props)}>
+          <Button variant="contained" onClick={() => console.log('hello')}>
             Card Props
           </Button>
         </Box>
