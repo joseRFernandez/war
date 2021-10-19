@@ -39,8 +39,7 @@ const newDeck = () => {
   });
 };
 
-// create a recursive card shuffler
-export const shuffleDeck = (deck) => {
+export const shuffleAndDealDeck = (deck) => {
   // shuffle the cards
   for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * i);
@@ -75,6 +74,3 @@ export const routes = [
   },
 ];
 
-export const determineValue = (card) => {
-  console.log(card.card[0]);
-};
