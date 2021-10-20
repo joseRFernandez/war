@@ -6,7 +6,7 @@ import GameBoard from './GameBoard';
 
 import { useHistory } from 'react-router';
 import Deck, {shuffleAndDealDeck} from '../utils';
-const StartScreen = (props) => {
+export const StartScreen = (props) => {
   const [gameIsRunning, setGameIsRunning] = useState(false);
   const history = useHistory();
 

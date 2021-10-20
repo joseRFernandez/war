@@ -9,7 +9,6 @@ import Card from './Card';
 import StatsPage from './StatsPage';
 
 export default function GameBoard(props) {
-  const [data, setData] = useState(null)
   const [card1, setCard1] = useState(props.data.hand1[0]);
   const [card2, setCard2] = useState(props.data.hand2[0]);
 
@@ -24,34 +23,34 @@ export default function GameBoard(props) {
     setCard2(deck2[0]);
   }, [deck2]);
 
-  function compareCards() {
+   function compareCards() {
     //build initial pile and add both cards
     let pile = [];
     pile.push(card1, card2);
 
     if (card1.value === 'J') {
-      card1.value = "11";
+      card1.value = '11';
     }
     if (card2.value === 'J') {
-      card2.value = "11";
+      card2.value = '11';
     }
     if (card1.value === 'Q') {
-      card1.value = "12";
+      card1.value = '12';
     }
     if (card2.value === 'Q') {
-      card2.value = "12";
+      card2.value = '12';
     }
     if (card1.value === 'K') {
-      card1.value = "13";
+      card1.value = '13';
     }
     if (card2.value === 'K') {
-      card2.value = "13";
+      card2.value = '13';
     }
     if (card2.value === 'A') {
-      card2.value = "14";
+      card2.value = '14';
     }
     if (card1.value === 'A') {
-      card1.value = "14";
+      card1.value = '14';
     }
 
     card1.value = parseInt(card1.value);
@@ -82,7 +81,7 @@ export default function GameBoard(props) {
       setDeck2(tempDeck2);
     }
     //player2 wins 1 card battle
-    if (card2.value>  card1.value) {
+    if (card2.value > card1.value) {
       //create new temp decks
       const tempDeck1 = deck1.slice(1);
       const tempDeck2 = deck2.slice(1);
@@ -131,19 +130,16 @@ export default function GameBoard(props) {
     return { data: { card1: newCard1, card2: newCard2, pile } };
   };
 
-
   if (deck1.length < 1) {
-    return <h1>Player 2 Wins</h1>
+    return <h1>Player 2 Wins</h1>;
   }
   if (deck2.length < 1) {
-    return <h2>Player 2 Wins</h2>
+    return <h2>Player 2 Wins</h2>;
   }
 
   if (card1 && card2) {
     return (
       <Fragment>
-        <Link to='/my-stats'>My Stats</Link>
-        <Route path='/my-stats' component={StatsPage} />
         <Box
           sx={{
             display: 'flex',
@@ -151,9 +147,12 @@ export default function GameBoard(props) {
             justifyContent: 'space-around',
             alignItems: 'center',
             height: 500,
+            backgroundColor: 'green',
           }}
         >
           <Card data={card1} />
+          <Link to="/my-stats">My Stats</Link>
+          <Route path="/my-stats" component={StatsPage} />
           <Card data={card2} />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -12,20 +12,21 @@ export default function StatsPage() {
     };
     fetchData();
   }, []);
-  const fetchedData = data;
-  //   const { userName, wins, losses} = stats.data[0]
-  // console.log(userName, wins, losses)
-  console.log(data.data[0]);
-  const { wins, userName, losses } = data.data[0];
+
   if (data) {
+    const fetchedData = data;
+    //   const { userName, wins, losses} = stats.data[0]
+    // console.log(userName, wins, losses)
+    console.log(data.data[0]);
+    const { wins, userName, losses } = data.data[0];
+    console.log(wins, userName, losses);
     return (
       <Fragment>
         <h1>{userName}</h1>
         <h1>{'Wins:'}</h1>
-        <h1>{('Wins: ', wins)}</h1>
+        <h1>{(wins)}</h1>
         <h1>{'Losses:'}</h1>
         <h1>{(losses)}</h1>
-
       </Fragment>
     );
   } else {
