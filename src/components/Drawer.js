@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Route} from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import StatsPage from './StatsPage';
 import Box from '@mui/material/Box';
@@ -123,6 +123,8 @@ export default function PersistentDrawerLeft() {
             )}
           </IconButton>
         </DrawerHeader>
+
+        <Link to="/my-stats">My Stats</Link>
         <Divider />
       </Drawer>
       <Main open={open}>

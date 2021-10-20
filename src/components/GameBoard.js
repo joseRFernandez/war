@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { useReducer } from 'react';
 import Box from '@mui/material/Box';
 import Deck, { shuffleAndDealDeck } from '../utils';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { getCard1 } from '../actions';
 import { Link, Route } from 'react-router-dom';
 import Card from './Card';
@@ -151,14 +151,14 @@ export default function GameBoard(props) {
           }}
         >
           <Card data={card1} />
-          <Link to="/my-stats">My Stats</Link>
-          <Route path="/my-stats" component={StatsPage} />
+
+          <Button variant="contained" onClick={compareCards}>
+            Drop Card
+          </Button>
           <Card data={card2} />
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button variant="contained" onClick={compareCards}>
-            check cards and pass to winner
-          </Button>
+
           <Button variant="outlined" onClick={() => console.log(deck1)}>
             Deck 1 State
           </Button>
@@ -166,6 +166,9 @@ export default function GameBoard(props) {
             Check deck 2
           </Button>
         </Box>
+        <Typography variant="h6" noWrap component="div">
+            {<Route path="/my-stats" component={StatsPage} />}
+          </Typography>
       </Fragment>
     );
   } else {
