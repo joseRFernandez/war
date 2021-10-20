@@ -11,3 +11,13 @@ router.use((req, res, next) => {
   error.status = 404;
   next(error);
 })
+
+router.get('/my-stats', async (req, res, next) => {
+  try {
+    let stats = await User.findAll();
+    console.log(stats);
+    res.send(stats)
+  } catch(err){
+    next(err)
+  }
+})

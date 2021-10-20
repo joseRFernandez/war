@@ -1,8 +1,8 @@
 import Drawer from './components/Drawer'
 import StartScreen from './components/StartScreen';
-import Card from './components/Card';
 
-function App() {
+function App(props) {
+  console.log(props)
   return (
     <div>
       <Drawer />

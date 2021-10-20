@@ -4,10 +4,12 @@ import Box from '@mui/material/Box';
 import Deck, { shuffleAndDealDeck } from '../utils';
 import { Button } from '@mui/material';
 import { getCard1 } from '../actions';
-
+import { Link, Route } from 'react-router-dom';
 import Card from './Card';
+import StatsPage from './StatsPage';
 
 export default function GameBoard(props) {
+  const [data, setData] = useState(null)
   const [card1, setCard1] = useState(props.data.hand1[0]);
   const [card2, setCard2] = useState(props.data.hand2[0]);
 
@@ -140,6 +142,8 @@ export default function GameBoard(props) {
   if (card1 && card2) {
     return (
       <Fragment>
+        <Link to='/my-stats'>My Stats</Link>
+        <Route path='/my-stats' component={StatsPage} />
         <Box
           sx={{
             display: 'flex',

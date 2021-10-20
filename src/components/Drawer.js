@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route} from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
+import StatsPage from './StatsPage';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -123,33 +124,9 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {[
-            'My_Stats',
-            'Select_Deck',
-            'View_Opponent_Stats',
-            'Forfeit_Match',
-          ].map((text, index) => (
-            <ListItem button key={index}>
-              <Link to={text.toLowerCase()}>
-                <ListItemIcon>
-                  {index === 0 || index === 2 ? (
-                    <AccountCircleIcon />
-                  ) : index === 3 ? (
-                    <CancelIcon />
-                  ) : (
-                    <ColorizeIcon />
-                  )}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </Link>
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-
       </Main>
     </Box>
   );
